@@ -53,7 +53,54 @@ Instruction::Instruction(unsigned machineCode)
       token = SRL;
       xtype = SHIFT;
       break;
-    // Add remaining cases for func files
+		case 8:
+			token = JR;
+			xtype = JUMP;
+			break;
+		case 12:
+			token = SYSCALL;
+			xtype = OTHER;
+			break;
+		case 32:
+			token = ADD;
+			xtype = ALU;
+			break;
+		case 33:
+			token = ADDU;
+			xtype = ALU;
+			break;
+		case 34:
+			token = SUB;
+			xtype = ALU;
+			break;
+		case 35:
+			token = SUBU;
+			xtype = ALU;
+			break;
+		case 36:
+			token = AND;
+			xtype = ALU;
+			break;
+		case 37:
+			token = OR;
+			xtype = ALU;
+			break;
+		case 38:
+			token = XOR;
+			xtype = ALU;
+			break;
+		case 39:
+			token = NOR;
+			xtype = ALU;
+			break;
+		case 42:
+			token = SLT;
+			xtype = ALU;
+			break;
+		case 43:
+			token = SLTU;
+			xtype = ALU;
+			break;
     default:
       break;
     }
@@ -63,7 +110,100 @@ Instruction::Instruction(unsigned machineCode)
     format = J_TYPE;
     xtype = JUMP;
     break;
-  // Add remaining cases for opcodes
+	case 3:
+		token = JAL;
+		format = J_TYPE;
+		xtype = JUMP;
+		break;
+	case 4:
+		token = BEQ;
+		format = I_TYPE;
+		xtype = BRANCH;
+		break;
+	case 5:
+		token = BNE;
+		format = I_TYPE;
+		xtype = BRANCH;
+		break;
+	case 8:
+		token = ADDI;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 9:
+		token = ADDIU;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 10:
+		token = SLT;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 11:
+		token = SLTU;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 12:
+		token = ANDI;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 13:
+		token = ORI;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 14:
+		token = XORI;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 15:
+		token = LUI;
+		format = I_TYPE;
+		xtype = ALU;
+		break;
+	case 32:
+		token = LB;
+		format = I_TYPE;
+		xtype = LOAD;
+		break;
+	case 33:
+		token = LH;
+		format = I_TYPE;
+		xtype = LOAD;
+		break;
+	case 35:
+		token = LW;
+		format = I_TYPE;
+		xtype = LOAD;
+		break;
+	case 36:
+		token = LBU;
+		format = I_TYPE;
+		xtype = LOAD;
+		break;
+	case 37:
+		token = LHU;
+		format = I_TYPE;
+		xtype = LOAD;
+		break;
+	case 40:
+		token = SB;
+		format = I_TYPE;
+		xtype = STORE;
+		break;
+	case 41:
+		token = SH;
+		format = I_TYPE;
+		xtype = STORE;
+		break;
+	case 43:
+		token = SW;
+		format = I_TYPE;
+		xtype = STORE;
   default:
     break;
   }

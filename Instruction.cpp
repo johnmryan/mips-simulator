@@ -282,7 +282,15 @@ string Instruction::str() {
  * between bit positions hi and lo, inclusive
  */
 unsigned Instruction::bitRange(unsigned hi, unsigned lo) {
-  return raw;
+	// logical left shift so that hi is now in position 31 and
+	// then logical right shift so that low is in position 0
+	unsigned tempRaw = raw;
+	int shiftLeftAmount = 31 - hi;
+	int shiftRightAmount = shiftLeftAmount + lo;
+	tempRaw = tempRaw << shiftLeftAmount;
+	tempRaw = tempRaw >> shiftRightAmount;
+
+	return tempRaw;
 }
 
 /*

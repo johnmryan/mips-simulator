@@ -34,12 +34,12 @@ Instruction::Instruction(unsigned machineCode)
 	token   (ITOKEN_NONE),
 	opcode  (bitRange(31, 26)),
 	func    (bitRange(5, 0)),
-	rs      (0),
-	rt      (0),
-	rd      (0),
-	shamt   (0),
-	imm     (0),
-	target  (0)
+	rs      (bitRange(25,21)),
+	rt      (bitRange(20,16)),
+	rd      (bitRange(15,11)),
+	shamt   (bitRange(10,6)),
+	imm     (bitRange(15,0)),
+	target  (bitRange(15,0))
 {
 	switch (opcode) {
 	case 0:

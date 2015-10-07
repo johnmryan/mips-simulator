@@ -298,7 +298,16 @@ unsigned Instruction::bitRange(unsigned hi, unsigned lo) {
  * to 32 bits and return it
  */
 unsigned Instruction::signExtend8(unsigned n) {
-	return n;
+	unsigned leadingBit = n >> 7;
+	if(leadingBit == 0) {
+		// n already has leading 0's by default
+		return n;
+	} else {
+		// leading bit == 1
+		// bits 31:8 should all be 1 without affecting first 8 bits
+		unsigned leading1s = 0b11111111111111111111111100000000;
+		return n | leading1s;
+	}
 }
 
 /*
@@ -306,6 +315,15 @@ unsigned Instruction::signExtend8(unsigned n) {
  * to 32 bits and return it
  */
 unsigned Instruction::signExtend16(unsigned n) {
-	return n;
+	unsigned leadingBit = n >> 15;
+	if(leadingBit == 0) {
+		// n already has leading 0's by default
+		return n;
+	} else {
+		// leading bit == 1
+		// bits 31:16 should all be 1 without affecting first 16 bits
+		unsigned leading1s = 0b11111111111111110000000000000000;
+		return n | leading1s;
+	}
 }
 

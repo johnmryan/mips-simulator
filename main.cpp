@@ -96,6 +96,7 @@ void testBitRange()
 void testSignExtend()
 {
 	Instruction inst(0);
+	inst.signExtend8(0b1111111);
 	assert(inst.signExtend8(0x4f) == 0x4f);
 	assert(inst.signExtend8(0x8f) == 0xffffff8f);
 	assert(inst.signExtend16(0x4fff) == 0x4fff);

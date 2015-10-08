@@ -136,12 +136,12 @@ Instruction::Instruction(unsigned machineCode)
 		xtype = ALU;
 		break;
 	case 10:
-		token = SLT;
+		token = SLTI;
 		format = I_TYPE;
 		xtype = ALU;
 		break;
 	case 11:
-		token = SLTU;
+		token = SLTIU;
 		format = I_TYPE;
 		xtype = ALU;
 		break;

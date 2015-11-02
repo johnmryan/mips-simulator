@@ -71,6 +71,10 @@ void instructionExecTest()
   Instruction(0x03e00008).exec();  TESTEQ(pc, 0x0040010c);    // jr $31
 }
 
+/* Basic emulation of an instruction pipeline
+ * No support for delayed branches
+ * Updates execPC to know where to get the next instruction in memory
+ */
 void runSimpleMachine()
 {
   Instruction *execI;
@@ -87,6 +91,13 @@ void runSimpleMachine()
   }
 }
 
+/* Emulates a 2 stage pipline:
+ * Initializes pipeline by placing instruction in exec stage
+ * Fetching next instruction and placing it in fetch stage
+ * Execute the instruction in the exec stage, then delete the instruction
+ * The previously fetched instruction becomes the next execution instruction
+ * Does support delayed branches
+ */
 void runBareMachine()
 {
   Instruction *fetchI, *execI;
@@ -108,6 +119,10 @@ void runBareMachine()
   }
 }
 
+/* Outputs statistics for each instruction type
+ * Displays instruction type followed by how many times the instruction token is executed (ie add, sll, ect)
+ * Displays execution types (ie ALU, shift, load, store, branch, ect) and how many times they occured
+ */
 void outputStats()
 {
   ofstream statFile;
@@ -122,6 +137,9 @@ void outputStats()
   }
 }
 
+/* Displays help menu for the user
+ * Providews more detailed usage information
+ */
 void printHelp()
 {
   printf("Usage: mipsim [<mipsim-options>] <qtSpim-log-file>\n");

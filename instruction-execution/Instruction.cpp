@@ -29,7 +29,7 @@ Instruction::Instruction(unsigned machineCode)
 	rd      (bitRange(15,11)),
 	shamt   (bitRange(10,6)),
 	imm     (bitRange(15,0)),
-	target  (bitRange(15,0))
+	target  (bitRange(25,0))
 {
 	switch (opcode) {
 	case 0:

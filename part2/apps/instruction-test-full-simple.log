@@ -1,0 +1,445 @@
+User Text Segment [00400000]..[00440000]
+[00400000] 8fa40000  lw $4, 0($29)            ; 183: lw $a0 0($sp) # argc 
+[00400004] 27a50004  addiu $5, $29, 4         ; 184: addiu $a1 $sp 4 # argv 
+[00400008] 24a60004  addiu $6, $5, 4          ; 185: addiu $a2 $a1 4 # envp 
+[0040000c] 00041080  sll $2, $4, 2            ; 186: sll $v0 $a0 2 
+[00400010] 00c23021  addu $6, $6, $2          ; 187: addu $a2 $a2 $v0 
+[00400014] 0c100009  jal 0x00400024 [main]    ; 188: jal main 
+[00400018] 00000000  nop                      ; 189: nop 
+[0040001c] 3402000a  ori $2, $0, 10           ; 191: li $v0 10 
+[00400020] 0000000c  syscall                  ; 192: syscall # syscall 10 (exit) 
+[00400024] 34070010  ori $7, $0, 16           ; 16: ori $7, $0, 16 # $7 = 0x10 
+[00400028] 3408000c  ori $8, $0, 12           ; 17: ori $8, $0, 0xc # $8 = b1100 
+[0040002c] 3409000a  ori $9, $0, 10           ; 18: ori $9, $0, 0xa # $9 = b1010 
+[00400030] 340a0001  ori $10, $0, 1           ; 19: ori $10, $0, 1 # $10 = 1 
+[00400034] 340b0002  ori $11, $0, 2           ; 20: ori $11, $0, 2 # $11 = 2 
+[00400038] 3c0cffff  lui $12, -1              ; 21: lui $12, 0xffff # $12 = 0xffff0000 
+[0040003c] 358cfffe  ori $12, $12, -2         ; 22: ori $12, $12, 0xfffe # $12 = -2 
+[00400040] 340d0004  ori $13, $0, 4           ; 23: ori $13, $0, 4 # $13 = 4 
+[00400044] 3c0eabcd  lui $14, -21555          ; 24: lui $14, 0xabcd # $14 = 0xabcd0000 
+[00400048] 35ce1234  ori $14, $14, 4660       ; 25: ori $14, $14, 0x1234 # $14 = 0xabcd1234 
+[0040004c] 000c7c00  sll $15, $12, 16         ; 26: sll $15, $12, 16 # $15 = 0xfffe0000 
+[00400050] 000c7c02  srl $15, $12, 16         ; 27: srl $15, $12, 16 # $15 = 0xffff 
+[00400054] 000e7c03  sra $15, $14, 16         ; 28: sra $15, $14, 16 # $15 = 0xffffabcd 
+[00400058] 01ae7804  sllv $15, $14, $13       ; 29: sllv $15, $14, $13 # $15 = 0xbcd12340 
+[0040005c] 01ae7806  srlv $15, $14, $13       ; 30: srlv $15, $14, $13 # $15 = 0x0abcd123 
+[00400060] 01ae7807  srav $15, $14, $13       ; 31: srav $15, $14, $13 # $15 = 0xfabcd123 
+[00400064] 01097824  and $15, $8, $9          ; 32: and $15, $8, $9 # $15 = 0x8 
+[00400068] 01097825  or $15, $8, $9           ; 33: or $15, $8, $9 # $15 = 0xe 
+[0040006c] 01097826  xor $15, $8, $9          ; 34: xor $15, $8, $9 # $15 = 0x6 
+[00400070] 01097827  nor $15, $8, $9          ; 35: nor $15, $8, $9 # $15 = 0xfffffff1 
+[00400074] 318fa0b0  andi $15, $12, -24400    ; 36: andi $15, $12, 0xa0b0 # $15 = 0xa0b0 
+[00400078] 354f1000  ori $15, $10, 4096       ; 37: ori $15, $10, 0x1000 # $15 = 0x1001 
+[0040007c] 390ffffa  xori $15, $8, -6         ; 38: xori $15, $8, 0xfffa # $15 = 0xfff6 
+[00400080] 014b7820  add $15, $10, $11        ; 39: add $15, $10, $11 # $15 = 3 
+[00400084] 014c7820  add $15, $10, $12        ; 40: add $15, $10, $12 # $15 = 0xffffffff 
+[00400088] 016c7820  add $15, $11, $12        ; 41: add $15, $11, $12 # $15 = 0 
+[0040008c] 014b7822  sub $15, $10, $11        ; 42: sub $15, $10, $11 # $15 = 0xffffffff 
+[00400090] 014c7822  sub $15, $10, $12        ; 43: sub $15, $10, $12 # $15 = 3 
+[00400094] 014b7821  addu $15, $10, $11       ; 44: addu $15, $10, $11 # $15 = 3 
+[00400098] 014c7821  addu $15, $10, $12       ; 45: addu $15, $10, $12 # $15 = 0xffffffff 
+[0040009c] 016c7821  addu $15, $11, $12       ; 46: addu $15, $11, $12 # $15 = 0 
+[004000a0] 014b7823  subu $15, $10, $11       ; 47: subu $15, $10, $11 # $15 = 0xffffffff 
+[004000a4] 014c7823  subu $15, $10, $12       ; 48: subu $15, $10, $12 # $15 = 3 
+[004000a8] 214ffffe  addi $15, $10, -2        ; 49: addi $15, $10, -2 # $15 = -1 
+[004000ac] 254ffffe  addiu $15, $10, -2       ; 50: addiu $15, $10, -2 # $15 = -1 
+[004000b0] 018b782a  slt $15, $12, $11        ; 51: slt $15, $12, $11 # $15 = 1 
+[004000b4] 018b782b  sltu $15, $12, $11       ; 52: sltu $15, $12, $11 # $15 = 0 
+[004000b8] 298fffff  slti $15, $12, -1        ; 53: slti $15, $12, -1 # $15 = 1 
+[004000bc] 2d4fffff  sltiu $15, $10, -1       ; 54: sltiu $15, $10, -1 # $15 = 1 
+[004000c0] 00ec0018  mult $7, $12             ; 55: mult $7, $12 # $hi = 0xffffffff, $lo = 0xffffffe0 
+[004000c4] 00ec0019  multu $7, $12            ; 56: multu $7, $12 # $hi = 0xf, $lo = 0xfffffffe0 
+[004000c8] 012c0018  mult $9, $12             ; 57: mult $9, $12 # $hi = 0xffffffff, $lo = 0xffffffec 
+[004000cc] 012c0019  multu $9, $12            ; 58: multu $9, $12 # $hi = 0x9, $lo = 0xffffffec 
+[004000d0] 018c0018  mult $12, $12            ; 59: mult $12, $12 # $hi = 0, $lo = 0x4 
+[004000d4] 018c0019  multu $12, $12           ; 60: multu $12, $12 # $hi = 0xfffffffc, $lo = 0x4 
+[004000d8] 012c001a  div $9, $12              ; 61: div $9, $12 # $hi = 0, $lo = 0xfffffffb 
+[004000dc] 012c001b  divu $9, $12             ; 62: divu $9, $12 # $hi = a, $lo = 0 
+[004000e0] 0189001a  div $12, $9              ; 63: div $12, $9 # $hi = 0xfffffffe, $lo = 0 
+[004000e4] 0189001b  divu $12, $9             ; 64: divu $12, $9 # $hi = 4, $lo = 0x19999999 
+[004000e8] 01000013  mtlo $8                  ; 65: mtlo $8 # $lo = 0xc 
+[004000ec] 01200011  mthi $9                  ; 66: mthi $9 # $hi = 0xa 
+[004000f0] 00007812  mflo $15                 ; 67: mflo $15 # $15 = 0xc 
+[004000f4] 00007810  mfhi $15                 ; 68: mfhi $15 # $15 = 0xa 
+[004000f8] 3c081001  lui $8, 4097             ; 72: lui $8, 0x1001 # $8 = 0x10010000 
+[004000fc] 8d0f0000  lw $15, 0($8)            ; 73: lw $15, 0($8) # $15 = 0x3210dcba 
+[00400100] 850f0000  lh $15, 0($8)            ; 74: lh $15, 0($8) # $15 = 0xffffdcba 
+[00400104] 950f0000  lhu $15, 0($8)           ; 75: lhu $15, 0($8) # $15 = 0xdcba 
+[00400108] 810f0000  lb $15, 0($8)            ; 76: lb $15, 0($8) # $15 = 0xffffffba 
+[0040010c] 910f0000  lbu $15, 0($8)           ; 77: lbu $15, 0($8) # $15 = 0xba 
+[00400110] 3c09deca  lui $9, -8502            ; 78: lui $9, 0xdeca # $9 = 0xdeca0000 
+[00400114] 3529fbad  ori $9, $9, -1107        ; 79: ori $9, $9, 0xfbad # $9 = 0xdecafbad 
+[00400118] ad090004  sw $9, 4($8)             ; 80: sw $9, 4($8) # M[10010000] = 0xdecafbad 
+[0040011c] 8d0f0004  lw $15, 4($8)            ; 81: lw $15, 4($8) # $15 = 0xdecafbad 
+[00400120] 34090012  ori $9, $0, 18           ; 82: ori $9, $0, 0x12 # $9 = 0x12 
+[00400124] a1090007  sb $9, 7($8)             ; 83: sb $9, 7($8) # M[0x10010007] = 0x12 
+[00400128] 8d0f0004  lw $15, 4($8)            ; 84: lw $15, 4($8) # $15 = 0x12cafbad 
+[0040012c] 34097654  ori $9, $0, 30292        ; 85: ori $9, $0, 0x7654 # $9 = 0x7654 
+[00400130] a5090004  sh $9, 4($8)             ; 86: sh $9, 4($8) # M[0x10010004] = 0x7654 
+[00400134] 8d0f0004  lw $15, 4($8)            ; 87: lw $15, 4($8) # $15 = 0x12ca7654 
+[00400138] 10000003  beq $0, $0, 12 [L1-0x00400138]; 90: beq $0, $0, L1 
+[0040013c] 340f0001  ori $15, $0, 1           ; 91: ori $15, $0, 1 
+[00400140] 340f0002  ori $15, $0, 2           ; 92: ori $15, $0, 2 
+[00400144] 340f0003  ori $15, $0, 3           ; 94: ori $15, $0, 3 
+[00400148] 14000005  bne $0, $0, 20 [L2-0x00400148]; 95: bne $0, $0, L2 
+[0040014c] 340f0004  ori $15, $0, 4           ; 96: ori $15, $0, 4 
+[00400150] 340f0005  ori $15, $0, 5           ; 97: ori $15, $0, 5 
+[00400154] 08100058  j 0x00400160 [L3]        ; 98: j L3 
+[00400158] 340f0006  ori $15, $0, 6           ; 99: ori $15, $0, 6 
+[0040015c] 340f0007  ori $15, $0, 7           ; 101: ori $15, $0, 7 
+[00400160] 340f0008  ori $15, $0, 8           ; 103: ori $15, $0, 8 
+[00400164] 1d600003  bgtz $11 12 [L4-0x00400164]; 107: bgtz $11, L4 
+[00400168] 340f0009  ori $15, $0, 9           ; 108: ori $15, $0, 9 
+[0040016c] 340f000a  ori $15, $0, 10          ; 109: ori $15, $0, 10 
+[00400170] 340f000b  ori $15, $0, 11          ; 111: ori $15, $0, 11 
+[00400174] 04010003  bgez $0 12 [L5-0x00400174]; 112: bgez $0, L5 
+[00400178] 340f000c  ori $15, $0, 12          ; 113: ori $15, $0, 12 
+[0040017c] 340f000d  ori $15, $0, 13          ; 114: ori $15, $0, 13 
+[00400180] 340f000e  ori $15, $0, 14          ; 116: ori $15, $0, 14 
+[00400184] 05800003  bltz $12 12 [L6-0x00400184]; 117: bltz $12, L6 
+[00400188] 340f000f  ori $15, $0, 15          ; 118: ori $15, $0, 15 
+[0040018c] 340f0010  ori $15, $0, 16          ; 119: ori $15, $0, 16 
+[00400190] 340f0011  ori $15, $0, 17          ; 121: ori $15, $0, 17 
+[00400194] 18000003  blez $0 12 [L7-0x00400194]; 122: blez $0, L7 
+[00400198] 340f0012  ori $15, $0, 18          ; 123: ori $15, $0, 18 
+[0040019c] 340f0013  ori $15, $0, 19          ; 124: ori $15, $0, 19 
+[004001a0] 340f0014  ori $15, $0, 20          ; 126: ori $15, $0, 20 
+[004001a4] 0c100071  jal 0x004001c4 [func]    ; 128: jal func 
+[004001a8] 340f0015  ori $15, $0, 21          ; 129: ori $15, $0, 21 
+[004001ac] 3c010040  lui $1, 64 [func]        ; 130: la $15 func 
+[004001b0] 342f01c4  ori $15, $1, 452 [func]  
+[004001b4] 01e0f809  jalr $31, $15            ; 131: jalr $15 
+[004001b8] 340f0016  ori $15, $0, 22          ; 132: ori $15, $0, 22 
+[004001bc] 3402000a  ori $2, $0, 10           ; 135: ori $v0, $0, 10 
+[004001c0] 0000000c  syscall                  ; 136: syscall # exit 
+[004001c4] 34020001  ori $2, $0, 1            ; 142: ori $2, $0, 1 
+[004001c8] 03e00008  jr $31                   ; 143: jr $31 
+[004001cc] 340f000a  ori $15, $0, 10          ; 144: ori $15, $0, 10 
+
+Kernel Text Segment [80000000]..[80010000]
+[80000180] 0001d821  addu $27, $0, $1         ; 90: move $k1 $at # Save $at 
+[80000184] 3c019000  lui $1, -28672           ; 92: sw $v0 s1 # Not re-entrant and we can't trust $sp 
+[80000188] ac220200  sw $2, 512($1)           
+[8000018c] 3c019000  lui $1, -28672           ; 93: sw $a0 s2 # But we need to use these registers 
+[80000190] ac240204  sw $4, 516($1)           
+[80000194] 401a6800  mfc0 $26, $13            ; 95: mfc0 $k0 $13 # Cause register 
+[80000198] 001a2082  srl $4, $26, 2           ; 96: srl $a0 $k0 2 # Extract ExcCode Field 
+[8000019c] 3084001f  andi $4, $4, 31          ; 97: andi $a0 $a0 0x1f 
+[800001a0] 34020004  ori $2, $0, 4            ; 101: li $v0 4 # syscall 4 (print_str) 
+[800001a4] 3c049000  lui $4, -28672 [__m1_]   ; 102: la $a0 __m1_ 
+[800001a8] 0000000c  syscall                  ; 103: syscall 
+[800001ac] 34020001  ori $2, $0, 1            ; 105: li $v0 1 # syscall 1 (print_int) 
+[800001b0] 001a2082  srl $4, $26, 2           ; 106: srl $a0 $k0 2 # Extract ExcCode Field 
+[800001b4] 3084001f  andi $4, $4, 31          ; 107: andi $a0 $a0 0x1f 
+[800001b8] 0000000c  syscall                  ; 108: syscall 
+[800001bc] 34020004  ori $2, $0, 4            ; 110: li $v0 4 # syscall 4 (print_str) 
+[800001c0] 3344003c  andi $4, $26, 60         ; 111: andi $a0 $k0 0x3c 
+[800001c4] 3c019000  lui $1, -28672           ; 112: lw $a0 __excp($a0) 
+[800001c8] 00240821  addu $1, $1, $4          
+[800001cc] 8c240180  lw $4, 384($1)           
+[800001d0] 00000000  nop                      ; 113: nop 
+[800001d4] 0000000c  syscall                  ; 114: syscall 
+[800001d8] 34010018  ori $1, $0, 24           ; 116: bne $k0 0x18 ok_pc # Bad PC exception requires special checks 
+[800001dc] 143a0008  bne $1, $26, 32 [ok_pc-0x800001dc] 
+[800001e0] 00000000  nop                      ; 117: nop 
+[800001e4] 40047000  mfc0 $4, $14             ; 119: mfc0 $a0 $14 # EPC 
+[800001e8] 30840003  andi $4, $4, 3           ; 120: andi $a0 $a0 0x3 # Is EPC word-aligned? 
+[800001ec] 10040004  beq $0, $4, 16 [ok_pc-0x800001ec]
+[800001f0] 00000000  nop                      ; 122: nop 
+[800001f4] 3402000a  ori $2, $0, 10           ; 124: li $v0 10 # Exit on really bad PC 
+[800001f8] 0000000c  syscall                  ; 125: syscall 
+[800001fc] 34020004  ori $2, $0, 4            ; 128: li $v0 4 # syscall 4 (print_str) 
+[80000200] 3c019000  lui $1, -28672 [__m2_]   ; 129: la $a0 __m2_ 
+[80000204] 3424000d  ori $4, $1, 13 [__m2_]   
+[80000208] 0000000c  syscall                  ; 130: syscall 
+[8000020c] 001a2082  srl $4, $26, 2           ; 132: srl $a0 $k0 2 # Extract ExcCode Field 
+[80000210] 3084001f  andi $4, $4, 31          ; 133: andi $a0 $a0 0x1f 
+[80000214] 14040002  bne $0, $4, 8 [ret-0x80000214]; 134: bne $a0 0 ret # 0 means exception was an interrupt 
+[80000218] 00000000  nop                      ; 135: nop 
+[8000021c] 401a7000  mfc0 $26, $14            ; 145: mfc0 $k0 $14 # Bump EPC register 
+[80000220] 275a0004  addiu $26, $26, 4        ; 146: addiu $k0 $k0 4 # Skip faulting instruction 
+[80000224] 409a7000  mtc0 $26, $14            ; 148: mtc0 $k0 $14 
+[80000228] 3c019000  lui $1, -28672           ; 153: lw $v0 s1 # Restore other registers 
+[8000022c] 8c220200  lw $2, 512($1)           
+[80000230] 3c019000  lui $1, -28672           ; 154: lw $a0 s2 
+[80000234] 8c240204  lw $4, 516($1)           
+[80000238] 001b0821  addu $1, $0, $27         ; 157: move $at $k1 # Restore $at 
+[8000023c] 40806800  mtc0 $0, $13             ; 160: mtc0 $0 $13 # Clear Cause register 
+[80000240] 401a6000  mfc0 $26, $12            ; 162: mfc0 $k0 $12 # Set Status register 
+[80000244] 375a0001  ori $26, $26, 1          ; 163: ori $k0 0x1 # Interrupts enabled 
+[80000248] 409a6000  mtc0 $26, $12            ; 164: mtc0 $k0 $12 
+[8000024c] 42000018  eret                     ; 167: eret 
+
+
+User data segment [10000000]..[10040000]
+[10000000]..[1000ffff]  00000000
+[10010000]    3210dcba  00000000  00000000  00000000    . . . 2 . . . . . . . . . . . . 
+[10010010]..[1003ffff]  00000000
+
+
+User Stack [7ffff1d0]..[80000000]
+[7ffff1d0]    00000001  7ffff2d6  00000000  7ffffff5    . . . . . . . . . . . . . . . . 
+[7ffff1e0]    7fffffe3  7fffffcd  7fffffbc  7fffff8d    . . . . . . . . . . . . . . . . 
+[7ffff1f0]    7fffff7e  7fffff49  7fffff3e  7fffff2e    ~ . . . I . . . > . . . . . . . 
+[7ffff200]    7fffff17  7fffff06  7ffffef4  7ffffec4    . . . . . . . . . . . . . . . . 
+[7ffff210]    7ffffe80  7ffffe4c  7ffffe1d  7ffffe14    . . . . L . . . . . . . . . . . 
+[7ffff220]    7ffff8f3  7ffff8b9  7ffff885  7ffff855    . . . . . . . . . . . . U . . . 
+[7ffff230]    7ffff7f3  7ffff7c0  7ffff77c  7ffff6c6    . . . . . . . . | . . . . . . . 
+[7ffff240]    7ffff6af  7ffff69d  7ffff67c  7ffff673    . . . . . . . . | . . . s . . . 
+[7ffff250]    7ffff641  7ffff62d  7ffff616  7ffff605    A . . . - . . . . . . . . . . . 
+[7ffff260]    7ffff5f6  7ffff5c0  7ffff5ae  7ffff591    . . . . . . . . . . . . . . . . 
+[7ffff270]    7ffff57f  7ffff565  7ffff556  7ffff547    . . . . e . . . V . . . G . . . 
+[7ffff280]    7ffff53f  7ffff530  7ffff504  7ffff4f8    ? . . . 0 . . . . . . . . . . . 
+[7ffff290]    7ffff4de  7ffff48f  7ffff47d  7ffff441    . . . . . . . . } . . . A . . . 
+[7ffff2a0]    7ffff421  7ffff417  7ffff402  7ffff3e3    ! . . . . . . . . . . . . . . . 
+[7ffff2b0]    7ffff3d8  7ffff3be  7ffff3ab  7ffff389    . . . . . . . . . . . . . . . . 
+[7ffff2c0]    7ffff368  7ffff34f  7ffff32e  7ffff31c    h . . . O . . . . . . . . . . . 
+[7ffff2d0]    00000000  682f0000  2f656d6f  2f62626a    . . . . . . / h o m e / j b b / 
+[7ffff2e0]    2f746967  632d646e  61706d6f  2f686372    g i t / n d - c o m p a r c h / 
+[7ffff2f0]    6973646e  6f632f6d  656c706d  612f6574    n d s i m / c o m p l e t e / a 
+[7ffff300]    2f737070  74736e69  74637572  2d6e6f69    p p s / i n s t r u c t i o n - 
+[7ffff310]    74736574  6c75662d  00732e6c  752f3d5f    t e s t - f u l l . s . _ = / u 
+[7ffff320]    622f7273  712f6e69  69707374  4158006d    s r / b i n / q t s p i m . X A 
+[7ffff330]    4f485455  59544952  6f682f3d  6a2f656d    U T H O R I T Y = / h o m e / j 
+[7ffff340]    2e2f6262  74756158  69726f68  43007974    b b / . X a u t h o r i t y . C 
+[7ffff350]    524f4c4f  4d524554  6f6e673d  742d656d    O L O R T E R M = g n o m e - t 
+[7ffff360]    696d7265  006c616e  54584554  414d4f44    e r m i n a l . T E X T D O M A 
+[7ffff370]    49444e49  752f3d52  732f7273  65726168    I N D I R = / u s r / s h a r e 
+[7ffff380]    636f6c2f  2f656c61  53454c00  4f4c4353    / l o c a l e / . L E S S C L O 
+[7ffff390]    2f3d4553  2f727375  2f6e6962  7373656c    S E = / u s r / b i n / l e s s 
+[7ffff3a0]    65706970  20732520  47007325  495f4b54    p i p e   % s   % s . G T K _ I 
+[7ffff3b0]    4f4d5f4d  454c5544  7562693d  44580073    M _ M O D U L E = i b u s . X D 
+[7ffff3c0]    55435f47  4e455252  45445f54  4f544b53    G _ C U R R E N T _ D E S K T O 
+[7ffff3d0]    6e553d50  00797469  50534944  3d59414c    P = U n i t y . D I S P L A Y = 
+[7ffff3e0]    5800303a  525f4744  49544e55  445f454d    : 0 . X D G _ R U N T I M E _ D 
+[7ffff3f0]    2f3d5249  2f6e7572  72657375  3030312f    I R = / r u n / u s e r / 1 0 0 
+[7ffff400]    45540030  4f445458  4e49414d  2d6d693d    0 . T E X T D O M A I N = i m - 
+[7ffff410]    666e6f63  49006769  4154534e  3d45434e    c o n f i g . I N S T A N C E = 
+[7ffff420]    53454c00  45504f53  207c3d4e  7273752f    . L E S S O P E N = |   / u s r 
+[7ffff430]    6e69622f  73656c2f  70697073  73252065    / b i n / l e s s p i p e   % s 
+[7ffff440]    55424400  45535f53  4f495353  55425f4e    . D B U S _ S E S S I O N _ B U 
+[7ffff450]    44415f53  53455244  6e753d53  613a7869    S _ A D D R E S S = u n i x : a 
+[7ffff460]    72747362  3d746361  706d742f  7562642f    b s t r a c t = / t m p / d b u 
+[7ffff470]    67792d73  366f517a  6a5a3764  34545100    s - y g z Q o 6 d 7 Z j . Q T 4 
+[7ffff480]    5f4d495f  55444f4d  783d454c  58006d69    _ I M _ M O D U L E = x i m . X 
+[7ffff490]    445f4744  5f415441  53524944  73752f3d    D G _ D A T A _ D I R S = / u s 
+[7ffff4a0]    68732f72  2f657261  6e756275  2f3a7574    r / s h a r e / u b u n t u : / 
+[7ffff4b0]    2f727375  72616873  6e672f65  3a656d6f    u s r / s h a r e / g n o m e : 
+[7ffff4c0]    7273752f  636f6c2f  732f6c61  65726168    / u s r / l o c a l / s h a r e 
+[7ffff4d0]    752f3a2f  732f7273  65726168  4f43002f    / : / u s r / s h a r e / . C O 
+[7ffff4e0]    5a49504d  4e49425f  5441505f  752f3d48    M P I Z _ B I N _ P A T H = / u 
+[7ffff4f0]    622f7273  002f6e69  4e474f4c  3d454d41    s r / b i n / . L O G N A M E = 
+[7ffff500]    0062626a  4d4f4e47  45445f45  4f544b53    j b b . G N O M E _ D E S K T O 
+[7ffff510]    45535f50  4f495353  44495f4e  6968743d    P _ S E S S I O N _ I D = t h i 
+[7ffff520]    73692d73  7065642d  61636572  00646574    s - i s - d e p r e c a t e d . 
+[7ffff530]    474e414c  45474155  5f6e653d  53005355    L A N G U A G E = e n _ U S . S 
+[7ffff540]    4c564c48  4800313d  3d454d4f  6d6f682f    H L V L = 1 . H O M E = / h o m 
+[7ffff550]    626a2f65  44580062  45535f47  733d5441    e / j b b . X D G _ S E A T = s 
+[7ffff560]    30746165  53455300  4e4f4953  45505954    e a t 0 . S E S S I O N T Y P E 
+[7ffff570]    6f6e673d  732d656d  69737365  47006e6f    = g n o m e - s e s s i o n . G 
+[7ffff580]    45534d44  4f495353  62753d4e  75746e75    D M S E S S I O N = u b u n t u 
+[7ffff590]    4d4f4300  5f5a4950  464e4f43  505f4749    . C O M P I Z _ C O N F I G _ P 
+[7ffff5a0]    49464f52  753d454c  746e7562  4d490075    R O F I L E = u b u n t u . I M 
+[7ffff5b0]    4e4f435f  5f474946  53414850  00313d45    _ C O N F I G _ P H A S E = 1 . 
+[7ffff5c0]    444e414d  524f5441  41505f59  2f3d4854    M A N D A T O R Y _ P A T H = / 
+[7ffff5d0]    2f727375  72616873  63672f65  2f666e6f    u s r / s h a r e / g c o n f / 
+[7ffff5e0]    6e756275  6d2e7574  61646e61  79726f74    u b u n t u . m a n d a t o r y 
+[7ffff5f0]    7461702e  44470068  414c5f4d  653d474e    . p a t h . G D M _ L A N G = e 
+[7ffff600]    53555f6e  4e414c00  6e653d47  2e53555f    n _ U S . L A N G = e n _ U S . 
+[7ffff610]    2d465455  4e470038  5f454d4f  5259454b    U T F - 8 . G N O M E _ K E Y R 
+[7ffff620]    5f474e49  3d444950  30363231  4f4d5800    I N G _ P I D = 1 2 6 0 . X M O 
+[7ffff630]    49464944  3d535245  3d6d6940  73756269    D I F I E R S = @ i m = i b u s 
+[7ffff640]    44575000  6f682f3d  6a2f656d  672f6262    . P W D = / h o m e / j b b / g 
+[7ffff650]    6e2f7469  6f632d64  7261706d  6e2f6863    i t / n d - c o m p a r c h / n 
+[7ffff660]    6d697364  6d6f632f  74656c70  70612f65    d s i m / c o m p l e t e / a p 
+[7ffff670]    4a007370  643d424f  00737562  515f5451    p s . J O B = d b u s . Q T _ Q 
+[7ffff680]    505f4150  4654414c  544d524f  454d4548    P A _ P L A T F O R M T H E M E 
+[7ffff690]    7070613d  756e656d  3574712d  5f545100    = a p p m e n u - q t 5 . Q T _ 
+[7ffff6a0]    4d5f4d49  4c55444f  62693d45  44007375    I M _ M O D U L E = i b u s . D 
+[7ffff6b0]    544b5345  535f504f  49535345  753d4e4f    E S K T O P _ S E S S I O N = u 
+[7ffff6c0]    746e7562  41500075  2f3d4854  656d6f68    b u n t u . P A T H = / h o m e 
+[7ffff6d0]    62626a2f  63676d2f  626d652f  65646465    / j b b / m g c / e m b e d d e 
+[7ffff6e0]    6f632f64  65626564  2f68636e  3a6e6962    d / c o d e b e n c h / b i n : 
+[7ffff6f0]    6d6f682f  626a2f65  69622f62  682f3a6e    / h o m e / j b b / b i n : / h 
+[7ffff700]    2f656d6f  2f62626a  2f63676d  65626d65    o m e / j b b / m g c / e m b e 
+[7ffff710]    64656464  646f632f  6e656265  622f6863    d d e d / c o d e b e n c h / b 
+[7ffff720]    2f3a6e69  2f727375  61636f6c  62732f6c    i n : / u s r / l o c a l / s b 
+[7ffff730]    2f3a6e69  2f727375  61636f6c  69622f6c    i n : / u s r / l o c a l / b i 
+[7ffff740]    752f3a6e  732f7273  3a6e6962  7273752f    n : / u s r / s b i n : / u s r 
+[7ffff750]    6e69622f  62732f3a  2f3a6e69  3a6e6962    / b i n : / s b i n : / b i n : 
+[7ffff760]    7273752f  6d61672f  2f3a7365  2f727375    / u s r / g a m e s : / u s r / 
+[7ffff770]    61636f6c  61672f6c  0073656d  5f474458    l o c a l / g a m e s . X D G _ 
+[7ffff780]    464e4f43  445f4749  3d535249  6374652f    C O N F I G _ D I R S = / e t c 
+[7ffff790]    6764782f  6764782f  7562752d  3a75746e    / x d g / x d g - u b u n t u : 
+[7ffff7a0]    7273752f  6168732f  752f6572  61747370    / u s r / s h a r e / u p s t a 
+[7ffff7b0]    782f7472  2f3a6764  2f637465  00676478    r t / x d g : / e t c / x d g . 
+[7ffff7c0]    41464544  53544c55  5441505f  752f3d48    D E F A U L T S _ P A T H = / u 
+[7ffff7d0]    732f7273  65726168  6f63672f  752f666e    s r / s h a r e / g c o n f / u 
+[7ffff7e0]    746e7562  65642e75  6c756166  61702e74    b u n t u . d e f a u l t . p a 
+[7ffff7f0]    53006874  49535345  4d5f4e4f  47414e41    t h . S E S S I O N _ M A N A G 
+[7ffff800]    6c3d5245  6c61636f  62626a2f  7269562d    E R = l o c a l / j b b - V i r 
+[7ffff810]    6c617574  3a786f42  6d742f40  492e2f70    t u a l B o x : @ / t m p / . I 
+[7ffff820]    752d4543  2f78696e  32333331  696e752c    C E - u n i x / 1 3 3 2 , u n i 
+[7ffff830]    626a2f78  69562d62  61757472  786f426c    x / j b b - V i r t u a l B o x 
+[7ffff840]    6d742f3a  492e2f70  752d4543  2f78696e    : / t m p / . I C E - u n i x / 
+[7ffff850]    32333331  48535300  5455415f  4f535f48    1 3 3 2 . S S H _ A U T H _ S O 
+[7ffff860]    2f3d4b43  2f6e7572  72657375  3030312f    C K = / r u n / u s e r / 1 0 0 
+[7ffff870]    656b2f30  6e697279  664e2d67  314c4e55    0 / k e y r i n g - N f U N L 1 
+[7ffff880]    6873732f  47445800  4145535f  41505f54    / s s h . X D G _ S E A T _ P A 
+[7ffff890]    2f3d4854  2f67726f  65657266  6b736564    T H = / o r g / f r e e d e s k 
+[7ffff8a0]    2f706f74  70736944  4d79616c  67616e61    t o p / D i s p l a y M a n a g 
+[7ffff8b0]    532f7265  30746165  47445800  5345535f    e r / S e a t 0 . X D G _ S E S 
+[7ffff8c0]    4e4f4953  5441505f  6f2f3d48  662f6772    S I O N _ P A T H = / o r g / f 
+[7ffff8d0]    64656572  746b7365  442f706f  6c707369    r e e d e s k t o p / D i s p l 
+[7ffff8e0]    614d7961  6567616e  65532f72  6f697373    a y M a n a g e r / S e s s i o 
+[7ffff8f0]    4c00306e  4f435f53  53524f4c  3d73723d    n 0 . L S _ C O L O R S = r s = 
+[7ffff900]    69643a30  3b31303d  6c3a3433  31303d6e    0 : d i = 0 1 ; 3 4 : l n = 0 1 
+[7ffff910]    3a36333b  303d686d  69703a30  3b30343d    ; 3 6 : m h = 0 0 : p i = 4 0 ; 
+[7ffff920]    733a3333  31303d6f  3a35333b  303d6f64    3 3 : s o = 0 1 ; 3 5 : d o = 0 
+[7ffff930]    35333b31  3d64623a  333b3034  31303b33    1 ; 3 5 : b d = 4 0 ; 3 3 ; 0 1 
+[7ffff940]    3d64633a  333b3034  31303b33  3d726f3a    : c d = 4 0 ; 3 3 ; 0 1 : o r = 
+[7ffff950]    333b3034  31303b31  3d75733a  343b3733    4 0 ; 3 1 ; 0 1 : s u = 3 7 ; 4 
+[7ffff960]    67733a31  3b30333d  633a3334  30333d61    1 : s g = 3 0 ; 4 3 : c a = 3 0 
+[7ffff970]    3a31343b  333d7774  32343b30  3d776f3a    ; 4 1 : t w = 3 0 ; 4 2 : o w = 
+[7ffff980]    343b3433  74733a32  3b37333d  653a3434    3 4 ; 4 2 : s t = 3 7 ; 4 4 : e 
+[7ffff990]    31303d78  3a32333b  61742e2a  31303d72    x = 0 1 ; 3 2 : * . t a r = 0 1 
+[7ffff9a0]    3a31333b  67742e2a  31303d7a  3a31333b    ; 3 1 : * . t g z = 0 1 ; 3 1 : 
+[7ffff9b0]    72612e2a  31303d6a  3a31333b  61742e2a    * . a r j = 0 1 ; 3 1 : * . t a 
+[7ffff9c0]    31303d7a  3a31333b  7a6c2e2a  31303d68    z = 0 1 ; 3 1 : * . l z h = 0 1 
+[7ffff9d0]    3a31333b  7a6c2e2a  303d616d  31333b31    ; 3 1 : * . l z m a = 0 1 ; 3 1 
+[7ffff9e0]    742e2a3a  303d7a6c  31333b31  742e2a3a    : * . t l z = 0 1 ; 3 1 : * . t 
+[7ffff9f0]    303d7a78  31333b31  7a2e2a3a  303d7069    x z = 0 1 ; 3 1 : * . z i p = 0 
+[7ffffa00]    31333b31  7a2e2a3a  3b31303d  2a3a3133    1 ; 3 1 : * . z = 0 1 ; 3 1 : * 
+[7ffffa10]    303d5a2e  31333b31  642e2a3a  31303d7a    . Z = 0 1 ; 3 1 : * . d z = 0 1 
+[7ffffa20]    3a31333b  7a672e2a  3b31303d  2a3a3133    ; 3 1 : * . g z = 0 1 ; 3 1 : * 
+[7ffffa30]    3d7a6c2e  333b3130  2e2a3a31  303d7a78    . l z = 0 1 ; 3 1 : * . x z = 0 
+[7ffffa40]    31333b31  622e2a3a  303d327a  31333b31    1 ; 3 1 : * . b z 2 = 0 1 ; 3 1 
+[7ffffa50]    622e2a3a  31303d7a  3a31333b  62742e2a    : * . b z = 0 1 ; 3 1 : * . t b 
+[7ffffa60]    31303d7a  3a31333b  62742e2a  303d327a    z = 0 1 ; 3 1 : * . t b z 2 = 0 
+[7ffffa70]    31333b31  742e2a3a  31303d7a  3a31333b    1 ; 3 1 : * . t z = 0 1 ; 3 1 : 
+[7ffffa80]    65642e2a  31303d62  3a31333b  70722e2a    * . d e b = 0 1 ; 3 1 : * . r p 
+[7ffffa90]    31303d6d  3a31333b  616a2e2a  31303d72    m = 0 1 ; 3 1 : * . j a r = 0 1 
+[7ffffaa0]    3a31333b  61772e2a  31303d72  3a31333b    ; 3 1 : * . w a r = 0 1 ; 3 1 : 
+[7ffffab0]    61652e2a  31303d72  3a31333b  61732e2a    * . e a r = 0 1 ; 3 1 : * . s a 
+[7ffffac0]    31303d72  3a31333b  61722e2a  31303d72    r = 0 1 ; 3 1 : * . r a r = 0 1 
+[7ffffad0]    3a31333b  63612e2a  31303d65  3a31333b    ; 3 1 : * . a c e = 0 1 ; 3 1 : 
+[7ffffae0]    6f7a2e2a  31303d6f  3a31333b  70632e2a    * . z o o = 0 1 ; 3 1 : * . c p 
+[7ffffaf0]    303d6f69  31333b31  372e2a3a  31303d7a    i o = 0 1 ; 3 1 : * . 7 z = 0 1 
+[7ffffb00]    3a31333b  7a722e2a  3b31303d  2a3a3133    ; 3 1 : * . r z = 0 1 ; 3 1 : * 
+[7ffffb10]    67706a2e  3b31303d  2a3a3533  65706a2e    . j p g = 0 1 ; 3 5 : * . j p e 
+[7ffffb20]    31303d67  3a35333b  69672e2a  31303d66    g = 0 1 ; 3 5 : * . g i f = 0 1 
+[7ffffb30]    3a35333b  6d622e2a  31303d70  3a35333b    ; 3 5 : * . b m p = 0 1 ; 3 5 : 
+[7ffffb40]    62702e2a  31303d6d  3a35333b  67702e2a    * . p b m = 0 1 ; 3 5 : * . p g 
+[7ffffb50]    31303d6d  3a35333b  70702e2a  31303d6d    m = 0 1 ; 3 5 : * . p p m = 0 1 
+[7ffffb60]    3a35333b  67742e2a  31303d61  3a35333b    ; 3 5 : * . t g a = 0 1 ; 3 5 : 
+[7ffffb70]    62782e2a  31303d6d  3a35333b  70782e2a    * . x b m = 0 1 ; 3 5 : * . x p 
+[7ffffb80]    31303d6d  3a35333b  69742e2a  31303d66    m = 0 1 ; 3 5 : * . t i f = 0 1 
+[7ffffb90]    3a35333b  69742e2a  303d6666  35333b31    ; 3 5 : * . t i f f = 0 1 ; 3 5 
+[7ffffba0]    702e2a3a  303d676e  35333b31  732e2a3a    : * . p n g = 0 1 ; 3 5 : * . s 
+[7ffffbb0]    303d6776  35333b31  732e2a3a  3d7a6776    v g = 0 1 ; 3 5 : * . s v g z = 
+[7ffffbc0]    333b3130  2e2a3a35  3d676e6d  333b3130    0 1 ; 3 5 : * . m n g = 0 1 ; 3 
+[7ffffbd0]    2e2a3a35  3d786370  333b3130  2e2a3a35    5 : * . p c x = 0 1 ; 3 5 : * . 
+[7ffffbe0]    3d766f6d  333b3130  2e2a3a35  3d67706d    m o v = 0 1 ; 3 5 : * . m p g = 
+[7ffffbf0]    333b3130  2e2a3a35  6765706d  3b31303d    0 1 ; 3 5 : * . m p e g = 0 1 ; 
+[7ffffc00]    2a3a3533  76326d2e  3b31303d  2a3a3533    3 5 : * . m 2 v = 0 1 ; 3 5 : * 
+[7ffffc10]    766b6d2e  3b31303d  2a3a3533  6265772e    . m k v = 0 1 ; 3 5 : * . w e b 
+[7ffffc20]    31303d6d  3a35333b  676f2e2a  31303d6d    m = 0 1 ; 3 5 : * . o g m = 0 1 
+[7ffffc30]    3a35333b  706d2e2a  31303d34  3a35333b    ; 3 5 : * . m p 4 = 0 1 ; 3 5 : 
+[7ffffc40]    346d2e2a  31303d76  3a35333b  706d2e2a    * . m 4 v = 0 1 ; 3 5 : * . m p 
+[7ffffc50]    303d7634  35333b31  762e2a3a  303d626f    4 v = 0 1 ; 3 5 : * . v o b = 0 
+[7ffffc60]    35333b31  712e2a3a  31303d74  3a35333b    1 ; 3 5 : * . q t = 0 1 ; 3 5 : 
+[7ffffc70]    756e2e2a  31303d76  3a35333b  6d772e2a    * . n u v = 0 1 ; 3 5 : * . w m 
+[7ffffc80]    31303d76  3a35333b  73612e2a  31303d66    v = 0 1 ; 3 5 : * . a s f = 0 1 
+[7ffffc90]    3a35333b  6d722e2a  3b31303d  2a3a3533    ; 3 5 : * . r m = 0 1 ; 3 5 : * 
+[7ffffca0]    766d722e  31303d62  3a35333b  6c662e2a    . r m v b = 0 1 ; 3 5 : * . f l 
+[7ffffcb0]    31303d63  3a35333b  76612e2a  31303d69    c = 0 1 ; 3 5 : * . a v i = 0 1 
+[7ffffcc0]    3a35333b  6c662e2a  31303d69  3a35333b    ; 3 5 : * . f l i = 0 1 ; 3 5 : 
+[7ffffcd0]    6c662e2a  31303d76  3a35333b  6c672e2a    * . f l v = 0 1 ; 3 5 : * . g l 
+[7ffffce0]    3b31303d  2a3a3533  3d6c642e  333b3130    = 0 1 ; 3 5 : * . d l = 0 1 ; 3 
+[7ffffcf0]    2e2a3a35  3d666378  333b3130  2e2a3a35    5 : * . x c f = 0 1 ; 3 5 : * . 
+[7ffffd00]    3d647778  333b3130  2e2a3a35  3d767579    x w d = 0 1 ; 3 5 : * . y u v = 
+[7ffffd10]    333b3130  2e2a3a35  3d6d6763  333b3130    0 1 ; 3 5 : * . c g m = 0 1 ; 3 
+[7ffffd20]    2e2a3a35  3d666d65  333b3130  2e2a3a35    5 : * . e m f = 0 1 ; 3 5 : * . 
+[7ffffd30]    3d767861  333b3130  2e2a3a35  3d786e61    a x v = 0 1 ; 3 5 : * . a n x = 
+[7ffffd40]    333b3130  2e2a3a35  3d76676f  333b3130    0 1 ; 3 5 : * . o g v = 0 1 ; 3 
+[7ffffd50]    2e2a3a35  3d78676f  333b3130  2e2a3a35    5 : * . o g x = 0 1 ; 3 5 : * . 
+[7ffffd60]    3d636161  333b3030  2e2a3a36  303d7561    a a c = 0 0 ; 3 6 : * . a u = 0 
+[7ffffd70]    36333b30  662e2a3a  3d63616c  333b3030    0 ; 3 6 : * . f l a c = 0 0 ; 3 
+[7ffffd80]    2e2a3a36  3d64696d  333b3030  2e2a3a36    6 : * . m i d = 0 0 ; 3 6 : * . 
+[7ffffd90]    6964696d  3b30303d  2a3a3633  616b6d2e    m i d i = 0 0 ; 3 6 : * . m k a 
+[7ffffda0]    3b30303d  2a3a3633  33706d2e  3b30303d    = 0 0 ; 3 6 : * . m p 3 = 0 0 ; 
+[7ffffdb0]    2a3a3633  63706d2e  3b30303d  2a3a3633    3 6 : * . m p c = 0 0 ; 3 6 : * 
+[7ffffdc0]    67676f2e  3b30303d  2a3a3633  3d61722e    . o g g = 0 0 ; 3 6 : * . r a = 
+[7ffffdd0]    333b3030  2e2a3a36  3d766177  333b3030    0 0 ; 3 6 : * . w a v = 0 0 ; 3 
+[7ffffde0]    2e2a3a36  3d617861  333b3030  2e2a3a36    6 : * . a x a = 0 0 ; 3 6 : * . 
+[7ffffdf0]    3d61676f  333b3030  2e2a3a36  3d787073    o g a = 0 0 ; 3 6 : * . s p x = 
+[7ffffe00]    333b3030  2e2a3a36  66707378  3b30303d    0 0 ; 3 6 : * . x s p f = 0 0 ; 
+[7ffffe10]    003a3633  52455355  62626a3d  4b544700    3 6 : . U S E R = j b b . G T K 
+[7ffffe20]    444f4d5f  53454c55  65766f3d  79616c72    _ M O D U L E S = o v e r l a y 
+[7ffffe30]    7263732d  626c6c6f  753a7261  7974696e    - s c r o l l b a r : u n i t y 
+[7ffffe40]    6b74672d  646f6d2d  00656c75  4d4f4e47    - g t k - m o d u l e . G N O M 
+[7ffffe50]    454b5f45  4e495259  4f435f47  4f52544e    E _ K E Y R I N G _ C O N T R O 
+[7ffffe60]    722f3d4c  752f6e75  2f726573  30303031    L = / r u n / u s e r / 1 0 0 0 
+[7ffffe70]    79656b2f  676e6972  55664e2d  00314c4e    / k e y r i n g - N f U N L 1 . 
+[7ffffe80]    54535055  5f545241  53534553  3d4e4f49    U P S T A R T _ S E S S I O N = 
+[7ffffe90]    78696e75  7362613a  63617274  632f3d74    u n i x : a b s t r a c t = / c 
+[7ffffea0]    752f6d6f  746e7562  70752f75  72617473    o m / u b u n t u / u p s t a r 
+[7ffffeb0]    65732d74  6f697373  30312f6e  312f3030    t - s e s s i o n / 1 0 0 0 / 1 
+[7ffffec0]    00333131  50444c4f  2f3d4457  656d6f68    1 1 3 . O L D P W D = / h o m e 
+[7ffffed0]    62626a2f  7469672f  2d646e2f  706d6f63    / j b b / g i t / n d - c o m p 
+[7ffffee0]    68637261  73646e2f  632f6d69  6c706d6f    a r c h / n d s i m / c o m p l 
+[7ffffef0]    00657465  444e4957  4449574f  3331373d    e t e . W I N D O W I D = 7 1 3 
+[7fffff00]    37313330  54560039  45565f45  4f495352    0 3 1 7 9 . V T E _ V E R S I O 
+[7fffff10]    34333d4e  58003930  4d5f4744  5f554e45    N = 3 4 0 9 . X D G _ M E N U _ 
+[7fffff20]    46455250  673d5849  656d6f6e  4853002d    P R E F I X = g n o m e - . S H 
+[7fffff30]    3d4c4c45  6e69622f  7361622f  45540068    E L L = / b i n / b a s h . T E 
+[7fffff40]    783d4d52  6d726574  47504700  4547415f    R M = x t e r m . G P G _ A G E 
+[7fffff50]    495f544e  3d4f464e  6e75722f  6573752f    N T _ I N F O = / r u n / u s e 
+[7fffff60]    30312f72  6b2f3030  69727965  4e2d676e    r / 1 0 0 0 / k e y r i n g - N 
+[7fffff70]    4c4e5566  70672f31  3a303a67  45530031    f U N L 1 / g p g : 0 : 1 . S E 
+[7fffff80]    4f495353  62753d4e  75746e75  47445800    S S I O N = u b u n t u . X D G 
+[7fffff90]    4552475f  52455445  5441445f  49445f41    _ G R E E T E R _ D A T A _ D I 
+[7fffffa0]    762f3d52  6c2f7261  6c2f6269  74686769    R = / v a r / l i b / l i g h t 
+[7fffffb0]    642d6d64  2f617461  0062626a  494c4553    d m - d a t a / j b b . S E L I 
+[7fffffc0]    5f58554e  54494e49  5345593d  554c4300    N U X _ I N I T = Y E S . C L U 
+[7fffffd0]    52455454  5f4d495f  55444f4d  783d454c    T T E R _ I M _ M O D U L E = x 
+[7fffffe0]    58006d69  535f4744  49535345  495f4e4f    i m . X D G _ S E S S I O N _ I 
+[7ffffff0]    31633d44  47445800  4e54565f  00373d52    D = c 1 . X D G _ V T N R = 7 . 
+
+
+Kernel data segment [90000000]..[90010000]
+[90000000]    78452020  74706563  206e6f69  636f2000        E x c e p t i o n   .   o c 
+[90000010]    72727563  61206465  6920646e  726f6e67    c u r r e d   a n d   i g n o r 
+[90000020]    000a6465  495b2020  7265746e  74707572    e d . .     [ I n t e r r u p t 
+[90000030]    2000205d  4c545b20  20005d42  4c545b20    ]   .     [ T L B ] .     [ T L 
+[90000040]    20005d42  4c545b20  20005d42  64415b20    B ] .     [ T L B ] .     [ A d 
+[90000050]    73657264  72652073  20726f72  69206e69    d r e s s   e r r o r   i n   i 
+[90000060]    2f74736e  61746164  74656620  205d6863    n s t / d a t a   f e t c h ]   
+[90000070]    5b202000  72646441  20737365  6f727265    .     [ A d d r e s s   e r r o 
+[90000080]    6e692072  6f747320  205d6572  5b202000    r   i n   s t o r e ]   .     [ 
+[90000090]    20646142  74736e69  74637572  206e6f69    B a d   i n s t r u c t i o n   
+[900000a0]    72646461  5d737365  20200020  6461425b    a d d r e s s ]   .     [ B a d 
+[900000b0]    74616420  64612061  73657264  00205d73      d a t a   a d d r e s s ]   . 
+[900000c0]    455b2020  726f7272  206e6920  63737973        [ E r r o r   i n   s y s c 
+[900000d0]    5d6c6c61  20200020  6572425b  6f706b61    a l l ]   .     [ B r e a k p o 
+[900000e0]    5d746e69  20200020  7365525b  65767265    i n t ]   .     [ R e s e r v e 
+[900000f0]    6e692064  75727473  6f697463  00205d6e    d   i n s t r u c t i o n ]   . 
+[90000100]    5b202000  74697241  74656d68  6f206369    .     [ A r i t h m e t i c   o 
+[90000110]    66726576  5d776f6c  20200020  6172545b    v e r f l o w ]   .     [ T r a 
+[90000120]    00205d70  5b202000  616f6c46  676e6974    p ]   . .     [ F l o a t i n g 
+[90000130]    696f7020  205d746e  20000000  6f435b20      p o i n t ]   . . .     [ C o 
+[90000140]    636f7270  005d3220  20000000  444d5b20    p r o c   2 ] . . . .     [ M D 
+[90000150]    005d584d  575b2020  68637461  2020005d    M X ] .     [ W a t c h ] .     
+[90000160]    63614d5b  656e6968  65686320  005d6b63    [ M a c h i n e   c h e c k ] . 
+[90000170]    00000000  5b202000  68636143  00005d65    . . . . .     [ C a c h e ] . . 
+[90000180]    90000024  90000033  9000003b  90000043    $ . . . 3 . . . ; . . . C . . . 
+[90000190]    9000004b  90000071  9000008d  900000aa    K . . . q . . . . . . . . . . . 
+[900001a0]    900000c0  900000d6  900000e6  90000100    . . . . . . . . . . . . . . . . 
+[900001b0]    90000101  9000011a  90000124  90000125    . . . . . . . . $ . . . % . . . 
+[900001c0]    90000139  9000013a  9000013b  90000148    9 . . . : . . . ; . . . H . . . 
+[900001d0]    90000149  9000014a  9000014b  90000154    I . . . J . . . K . . . T . . . 
+[900001e0]    9000015e  90000170  90000171  90000172    ^ . . . p . . . q . . . r . . . 
+[900001f0]    90000173  90000174  90000175  9000017f    s . . . t . . . u . . . . . . . 
+[90000200]..[9000ffff]  00000000
+
+

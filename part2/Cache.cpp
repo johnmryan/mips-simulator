@@ -9,26 +9,26 @@
 
 #include "global.h"
 
-Cache::Cache(unsigned logBlockSize_, unsigned logDepth_)
+	Cache::Cache(unsigned logBlockSize_, unsigned logDepth_)
 : logBlockSize(logBlockSize_),
-  logDepth(logDepth_),
-  accesses(0),
-  hits(0),
-  tagArray(new unsigned [1<<logDepth]),
-  validArray(new bool [1<<logDepth])
+	logDepth(logDepth_),
+	accesses(0),
+	hits(0),
+	tagArray(new unsigned [1<<logDepth]),
+	validArray(new bool [1<<logDepth])
 { }
 
 Cache::~Cache() {
-  delete tagArray;
-  delete validArray;
+	delete tagArray;
+	delete validArray;
 }
 
 bool Cache::checkHit(unsigned addr) {
-  ++accesses;
-  ++hits;
-  return true;
+	++accesses;
+	++hits;
+	return true;
 }
 
 void Cache::printStats() {
-  printf("accesses = %u  hits = %u  hit rate = %f\n", accesses, hits, (float) hits/accesses);
+	printf("accesses = %u  hits = %u  hit rate = %f\n", accesses, hits, (float) hits/accesses);
 }

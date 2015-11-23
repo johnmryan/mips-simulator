@@ -15,12 +15,12 @@
 enum PipeStages { PS_IF, PS_ID, PS_EX, PS_MEM, PS_WB, NUM_PS };
 
 class Pipeline {
-  Pipeline() { }
-  queue<Instruction*> instBuffer;
-  Instruction* pipeline[NUM_PS];
-public:
-  void insert(Instruction* inst)    { instBuffer.push(inst); }
-  bool step();
+	Pipeline() { }
+	queue<Instruction*> instBuffer;
+	Instruction* pipeline[NUM_PS];
+	public:
+	void insert(Instruction* inst)    { instBuffer.push(inst); }
+	bool step();
 };
 
 #endif /* NDSIM_COMPLETE_PIPELINE_H_ */

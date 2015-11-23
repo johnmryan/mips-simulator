@@ -11,11 +11,11 @@
 #include "global.h"
 
 class RegFile {
-  friend class SimpleSim;
-  uint32_t A[32];
-public:
-  uint32_t& operator[] (unsigned i);
-  RegFile();
+	friend class SimpleSim;
+	uint32_t A[32];
+	public:
+	uint32_t& operator[] (unsigned i);
+	RegFile();
 };
 
 #endif /* NDSIM_REGFILE_H_ */

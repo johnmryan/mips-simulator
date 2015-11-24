@@ -24,9 +24,32 @@ Cache::~Cache() {
 }
 
 bool Cache::checkHit(unsigned addr) {
-	++accesses;
-	++hits;
-	return true;
+	unsigned nTagBits = 32 - (logDepth + logBlockSize);
+	unsigned tag = addr >> (logDepth + logBlockSize);
+
+	unsigned offset = addr << (nTagBits + logDepth);
+	offset = offset >> (nTagBits + logDepth);
+
+	unsigned index = addr << nTagBits;
+	index = index >> (32 - logBlockSize);
+	
+	accesses++;
+
+	if (validArray[index]) {
+		if (tagArray[index] == tag) {
+			hits++;
+			return true;
+		}	
+		else {
+			tagArray[index] = tag;
+		}
+	}
+	else {
+		tagArray[index] = tag;
+		validArray[index] = true;
+	}
+
+	return false;
 }
 
 void Cache::printStats() {

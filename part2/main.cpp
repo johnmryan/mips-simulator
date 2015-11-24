@@ -131,6 +131,15 @@ void instructionExecTest()
 	Instruction(0x03e00008).exec();  TESTEQ(pc, 0x00400110);    // jr $31
 }
 
+void testCache() {
+	Cache cache(2, 3);
+	TESTEQ(cache.checkHit(0x00000001), false);
+	TESTEQ(cache.checkHit(0x00000001), true);
+	TESTEQ(cache.checkHit(0x00000011), false);
+	TESTEQ(cache.checkHit(0x00000011), true);
+	TESTEQ(cache.checkHit(0x12345678), false);
+}
+
 void runSimpleMachine()
 {
 	Instruction *execI;
@@ -244,6 +253,7 @@ int main(int argc, char **argv)
 			case 't' :
 				bareMachineMode = false;
 				instructionExecTest();
+				testCache();
 				return 0;
 			case 's' :
 				bareMachineMode = false;
